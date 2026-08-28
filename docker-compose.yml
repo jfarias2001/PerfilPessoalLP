@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  lp-joao:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lp-joao
+    restart: unless-stopped
+    networks:
+      - traefik_default
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.lp-joao.rule=Host(`joaopaulofarias.com.br`, `www.joaopaulofarias.com.br`)
+      - traefik.http.routers.lp-joao.entrypoints=web,websecure
+      - traefik.http.routers.lp-joao.tls.certresolver=leresolver
+      - traefik.http.routers.lp-joao.service=lp-joao
+      - traefik.http.services.lp-joao.loadbalancer.server.port=80
+      - traefik.docker.network=traefik_default
+
+networks:
+  traefik_default:
+    external: true

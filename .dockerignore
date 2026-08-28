@@ -1,0 +1,10 @@
+originais/
+*.md
+Dockerfile
+.dockerignore
+docker-compose.yml
+docker-compose.swarm.yml
+.env
+.env.example
+.git/
+.claude/

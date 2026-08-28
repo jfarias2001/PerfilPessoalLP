@@ -1,0 +1,51 @@
+# =========================================================
+#  Material bruto — NUNCA commitar
+# =========================================================
+# 232 MB, com um .mp4 de 241 MB dentro. O GitHub recusa
+# arquivos acima de 100 MB, entao isso quebraria o push.
+# E material de origem, nao entra no site.
+originais/
+
+# Outros brutos, caso apareçam soltos na raiz
+*.psd
+*.ai
+*.prproj
+*.aep
+
+# =========================================================
+#  Segredos
+# =========================================================
+.env
+.env.*
+!.env.example
+
+# =========================================================
+#  Sistema operacional
+# =========================================================
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# =========================================================
+#  Editores
+# =========================================================
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*~
+
+# =========================================================
+#  Claude Code
+# =========================================================
+# CLAUDE.md fica versionado (é contexto do projeto);
+# só as configs locais da máquina saem.
+.claude/settings.local.json
+
+# =========================================================
+#  Diversos
+# =========================================================
+*.log
+node_modules/
