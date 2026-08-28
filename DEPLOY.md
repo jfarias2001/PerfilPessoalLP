@@ -46,28 +46,37 @@ Antes de subir, descomente o bloco do Pixel no fim do `index.html` e troque
 
 ---
 
-## 3. Mandar os arquivos
+## 3. Clonar o repositório na VPS
 
-Crie `/root/lp-joao/` e suba:
-
-```
-index.html
-assets/            (pasta inteira, ~15 MB)
-Dockerfile
-nginx.conf
-docker-compose.yml
-.dockerignore
+```bash
+cd /root/perfiljoaolp
+git clone https://github.com/SEU_USUARIO/SEU_REPO.git .
 ```
 
-**Não suba `originais/`** — 232 MB de material bruto que não é servido. O
-`.dockerignore` já exclui do build, mas não faz sentido nem transferir.
+O **ponto no final** faz o clone cair direto nessa pasta, em vez de criar
+`perfiljoaolp/SEU_REPO/`. Só funciona se a pasta estiver vazia.
+
+Repositório privado? A senha do GitHub não funciona mais — gere um token em
+Settings > Developer settings > Personal access tokens (escopo `repo`) e use
+ele como senha quando o `git clone` pedir.
+
+### Atualizar depois
+
+```bash
+cd /root/perfiljoaolp
+git pull
+docker compose up -d --build
+```
+
+A `originais/` não vem no clone — está no `.gitignore`, então nem entrou no
+repositório. É de propósito: são 232 MB de material bruto que o site não serve.
 
 ---
 
 ## 4. Subir
 
 ```bash
-cd /root/lp-joao
+cd /root/perfiljoaolp
 docker compose up -d --build
 docker compose logs -f lp-joao
 ```
@@ -87,7 +96,7 @@ curl https://joaopaulofarias.com.br/health    # deve responder "healthy"
 ## 5. Atualizar depois
 
 ```bash
-cd /root/lp-joao
+cd /root/perfiljoaolp
 docker compose up -d --build
 ```
 
